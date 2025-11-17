@@ -13,10 +13,10 @@ namespace ToDoListMSEF
     /// </summary>
     internal class ToDoItem
     {
-        int Id { get; set; }
-        string Name { get; set; }
-        DateTime CreatedAt { get; set; }
-        DateTime DueDate { get; set; }
-        bool IsCompleted { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime DueDate { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }
