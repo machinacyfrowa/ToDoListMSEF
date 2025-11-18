@@ -33,6 +33,9 @@
             ToDoDateTimePicker = new DateTimePicker();
             AddToDoButton = new Button();
             label2 = new Label();
+            dataGridView1 = new DataGridView();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // ToDoNameTextBox
@@ -78,11 +81,20 @@
             label2.TabIndex = 4;
             label2.Text = "Termin wykonania:";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(29, 95);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(621, 313);
+            dataGridView1.TabIndex = 5;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(label2);
             Controls.Add(AddToDoButton);
             Controls.Add(ToDoDateTimePicker);
@@ -90,6 +102,8 @@
             Controls.Add(ToDoNameTextBox);
             Name = "Form1";
             Text = "Form1";
+            FormClosed += Form1_FormClosed;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -101,5 +115,7 @@
         private DateTimePicker ToDoDateTimePicker;
         private Button AddToDoButton;
         private Label label2;
+        private DataGridView dataGridView1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
