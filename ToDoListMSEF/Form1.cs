@@ -17,6 +17,9 @@ namespace ToDoListMSEF
             bindingSource.DataSource = items;
             //ustawiamy Ÿród³o danych dla DataGridView
             ToDoDataGridView.DataSource = bindingSource;
+            //kosmetyka - ukrywamy kolumnê Id i dostosowujemy szerokoœæ kolumn
+            ToDoDataGridView.Columns["Id"].Visible = false;
+            ToDoDataGridView.AutoResizeColumns();
         }
         // ta funkcja jest przypiêta do zdarzenia FormClosed formularza
         private void Form1_FormClosed(object? sender, FormClosedEventArgs e)

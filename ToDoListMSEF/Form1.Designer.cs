@@ -83,6 +83,7 @@
             // 
             // ToDoDataGridView
             // 
+            ToDoDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ToDoDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ToDoDataGridView.Location = new Point(29, 95);
             ToDoDataGridView.Name = "ToDoDataGridView";
