@@ -89,6 +89,7 @@
             ToDoDataGridView.Name = "ToDoDataGridView";
             ToDoDataGridView.Size = new Size(621, 313);
             ToDoDataGridView.TabIndex = 5;
+            ToDoDataGridView.CellValueChanged += ToDoDataGridView_CellValueChanged;
             // 
             // Form1
             // 
