@@ -10,6 +10,13 @@ namespace ToDoListMSEF
             Database db = new Database();
             //sprawdzamy czy baza istnieje, jeœli nie to j¹ tworzymy
             db.Database.EnsureCreated();
+            //pobieramy sobie wszystkie zadania z bazy danych
+            List<ToDoItem> items = db.ToDoItems.ToList();
+            //tworzymy databinding Ÿród³o danych dla DataGridView
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = items;
+            //ustawiamy Ÿród³o danych dla DataGridView
+            ToDoDataGridView.DataSource = bindingSource;
         }
         // ta funkcja jest przypiêta do zdarzenia FormClosed formularza
         private void Form1_FormClosed(object? sender, FormClosedEventArgs e)
