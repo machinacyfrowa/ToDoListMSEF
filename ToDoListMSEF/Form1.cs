@@ -22,9 +22,9 @@ namespace ToDoListMSEF
             ////ustawiamy Ÿród³o danych dla DataGridView
             //ToDoDataGridView.DataSource = bindingSource;
             //kosmetyka - ukrywamy kolumnê Id i dostosowujemy szerokoœæ kolumn
-            if(ToDoDataGridView.Columns["Id"] != null)
+            if (ToDoDataGridView.Columns["Id"] != null)
                 ToDoDataGridView.Columns["Id"].Visible = false;
-            ToDoDataGridView.AutoResizeColumns();   
+            ToDoDataGridView.AutoResizeColumns();
         }
         // ta funkcja jest przypiêta do zdarzenia FormClosed formularza
         private void Form1_FormClosed(object? sender, FormClosedEventArgs e)
@@ -87,6 +87,23 @@ namespace ToDoListMSEF
             //    }
             //    db.SaveChanges();
             //}
+        }
+
+        private void ToDoDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //je¿eli nazwa obecnie "rysowanej" kolumny to DueDate
+            if (ToDoDataGridView.Columns[e.ColumnIndex].Name == "DueDate")
+            {
+                //zak³adamy, ¿e nigdy nie bêdziemy mieli pustej daty
+                string dueDateString = e.Value.ToString();
+                //konwertujemy na DateTime ze stringa
+                DateTime dueDate = DateTime.Parse(dueDateString);
+                if (dueDate < DateTime.Now)
+                {
+                    //ustaw kolor t³a obecnego wiersza na czerwony
+                    ToDoDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
         }
     }
 }

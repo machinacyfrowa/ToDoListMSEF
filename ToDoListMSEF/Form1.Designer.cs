@@ -85,12 +85,14 @@
             // 
             // ToDoDataGridView
             // 
+            ToDoDataGridView.AllowUserToAddRows = false;
             ToDoDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ToDoDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ToDoDataGridView.Location = new Point(29, 95);
             ToDoDataGridView.Name = "ToDoDataGridView";
             ToDoDataGridView.Size = new Size(621, 313);
             ToDoDataGridView.TabIndex = 5;
+            ToDoDataGridView.CellFormatting += ToDoDataGridView_CellFormatting;
             ToDoDataGridView.CellValueChanged += ToDoDataGridView_CellValueChanged;
             // 
             // Form1
