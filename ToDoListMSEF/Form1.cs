@@ -4,7 +4,7 @@ namespace ToDoListMSEF
     public partial class Form1 : Form
     {
         Database db = new Database();
-        List<ToDoItem> items;
+        //List<ToDoItem> items;
         public Form1()
         {
             InitializeComponent();
@@ -39,8 +39,6 @@ namespace ToDoListMSEF
             string name = ToDoNameTextBox.Text;
             //pobieramy datê wykonania z DateTimePickera
             DateTime dueDate = ToDoDateTimePicker.Value;
-
-
             //tworzymy nowe zadanie
             ToDoItem newItem = new ToDoItem();
             //nadajemy mu nazwe, datê utworzenia i datê wykonania
@@ -63,8 +61,11 @@ namespace ToDoListMSEF
 
         private void ToDoDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            //upewnij siê, ¿e zmiany w DataGridView s¹ zatwierdzone
             ToDoDataGridView.EndEdit();
+            //zatwierdŸ zmiany w Ÿródle danych
             ToDoBindingSource.EndEdit();
+            //zapisz zmiany do bazy danych
             db.SaveChanges();
             //// sprawdŸ czy w ogóle kikniêto "poprawny" wiersz
             //if (e.RowIndex >= 0)
