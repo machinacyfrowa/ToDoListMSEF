@@ -29,6 +29,12 @@ namespace ToDoListMSEF
         // ta funkcja jest przypiêta do zdarzenia FormClosed formularza
         private void Form1_FormClosed(object? sender, FormClosedEventArgs e)
         {
+            //sprz¹tamy wykonane zadania z terminem w przesz³oœci
+            //usuñ wszystkie wiersze gdzie isCompleted jest true i DueDate jest mniejsze ni¿ teraz
+            var completedItems = db.ToDoItems
+                                   .Where(item => item.IsCompleted && item.DueDate < DateTime.Now);
+            db.ToDoItems.RemoveRange(completedItems);
+            db.SaveChanges();
             //zamykanie po³¹czenia z baz¹ danych przy zamykaniu formularza
             db.Dispose();
         }
