@@ -24,6 +24,21 @@ namespace ToDoListMSEF
             //kosmetyka - ukrywamy kolumnê Id i dostosowujemy szerokoœæ kolumn
             if (ToDoDataGridView.Columns["Id"] != null)
                 ToDoDataGridView.Columns["Id"].Visible = false;
+            //dodaj kolumnê z guzikiem do usuwania zadañ
+            //definiujemy kolumnê
+            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+            //ustawiamy jej w³aœciwoœci
+            //nazwa kolumny w DataGridView
+            deleteButtonColumn.Name = "Remove";
+            //tekst nag³ówka kolumny
+            deleteButtonColumn.HeaderText = "Usuñ zadanie";
+            //tekst na guziku
+            deleteButtonColumn.Text = "Usuñ";
+            //tekst taki sam dla ka¿dego guzika
+            deleteButtonColumn.UseColumnTextForButtonValue = true;
+            //dodajemy kolumnê do DataGridView
+            ToDoDataGridView.Columns.Add(deleteButtonColumn);
+
             ToDoDataGridView.AutoResizeColumns();
         }
         // ta funkcja jest przypiêta do zdarzenia FormClosed formularza
@@ -46,8 +61,8 @@ namespace ToDoListMSEF
             //sprawdzamy czy nazwa nie jest pusta
             if (string.IsNullOrWhiteSpace(name))
             {
-                MessageBox.Show("Nazwa zadania nie mo¿e byæ pusta.", "B³¹d", 
-                                MessageBoxButtons.OK, 
+                MessageBox.Show("Nazwa zadania nie mo¿e byæ pusta.", "B³¹d",
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 //reszta funkcji nie jest wykonywana
                 return;
@@ -118,6 +133,20 @@ namespace ToDoListMSEF
                     //ustaw kolor t³a obecnego wiersza na czerwony
                     ToDoDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
                 }
+            }
+        }
+
+        private void ToDoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //sprawdzamy czy klikniêto w kolumnê z guzikami
+            if (ToDoDataGridView.Columns[e.ColumnIndex].Name == "Remove")
+            {
+                //wyci¹gnij obiekt powi¹zany z danym wierszem
+                var rowData = ToDoDataGridView.Rows[e.RowIndex].DataBoundItem;
+                //usuñ ten obiekt z bazy danych
+                db.ToDoItems.Remove((ToDoItem)rowData);
+                //zapisz zmiany w bazie danych
+                db.SaveChanges();
             }
         }
     }
