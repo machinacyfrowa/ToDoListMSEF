@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             ToDoNameTextBox = new TextBox();
             label1 = new Label();
             ToDoDateTimePicker = new DateTimePicker();
             AddToDoButton = new Button();
             label2 = new Label();
             ToDoDataGridView = new DataGridView();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ToDoBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)ToDoDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ToDoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // ToDoNameTextBox
@@ -106,6 +108,7 @@
             Text = "Form1";
             FormClosed += Form1_FormClosed;
             ((System.ComponentModel.ISupportInitialize)ToDoDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ToDoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,6 +121,6 @@
         private Button AddToDoButton;
         private Label label2;
         private DataGridView ToDoDataGridView;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private BindingSource ToDoBindingSource;
     }
 }
