@@ -37,6 +37,15 @@ namespace ToDoListMSEF
         {
             //pobiermay nazwê zadania z textboxa
             string name = ToDoNameTextBox.Text;
+            //sprawdzamy czy nazwa nie jest pusta
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Nazwa zadania nie mo¿e byæ pusta.", "B³¹d", 
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error);
+                //reszta funkcji nie jest wykonywana
+                return;
+            }
             //pobieramy datê wykonania z DateTimePickera
             DateTime dueDate = ToDoDateTimePicker.Value;
             //tworzymy nowe zadanie
